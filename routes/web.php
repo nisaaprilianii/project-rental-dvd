@@ -7,6 +7,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CusPeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,47 +24,71 @@ Route::get('/dashboard', function () {
     return view('home.dashboard');
 });
 
-Route::middleware(['auth:customer'])->group(function() {
-    Route::get('/customer/dashboard', [DashboardController::class, 'indexCustomer']);
+Route::prefix('customer')->middleware(['auth:customer'])->group(function() {
+    Route::get('/dashboard', [DashboardController::class, 'indexCustomer']);
+
+    Route::prefix('peminjaman')->controller(CusPeminjamanController::class)->group(function() {
+        Route::get('/', 'index');
+        Route::get('/tambah', 'create');
+        Route::post('/simpan', 'store');
+        Route::get('/{id}/hapus', 'destroy');
+        Route::get('/{id}/edit', 'show');
+        Route::post('/{id}/update', 'update');
+        Route::get('/{id}/struk', 'struk');
+        Route::get('/cetak', 'cetak');
+    });
 });
 
-Route::get('/user', [UserController::class, 'index']);
-Route::get('/user/tambah', [UserController::class, 'create']);
-Route::post('/user/simpan', [UserController::class, 'store']);
-Route::get('/user/{id}/hapus', [UserController::class, 'destroy']);
-Route::get('/user/{id}/edit', [UserController::class, 'show']);
-Route::post('/user/{id}/update', [UserController::class, 'update']);
+Route::prefix('petugas')->middleware(['auth:web'])->group(function() {
+    Route::prefix('user')->controller(UserController::class)->group(function() {
+        Route::get('/', 'index');
+        Route::get('/tambah', 'create');
+        Route::post('/simpan', 'store');
+        Route::get('/{id}/hapus', 'destroy');
+        Route::get('/{id}/edit', 'show');
+        Route::post('/{id}/update', 'update');
+    });
+    
+    Route::prefix('customer')->group(function() {
+        Route::get('/', [CustomerController::class, 'index']);
+        Route::get('/tambah', [CustomerController::class, 'create']);
+        Route::post('/simpan', [CustomerController::class, 'store']);
+        Route::get('/{id}/hapus', [CustomerController::class, 'destroy']);
+        Route::get('/{id}/edit', [CustomerController::class, 'show']);
+        Route::post('/{id}/update', [CustomerController::class, 'update']);
+    });
+    
+    Route::prefix('barang')->controller(BarangController::class)->group(function() {
+        Route::get('/', 'index');
+        Route::get('/tambah', 'create');
+        Route::post('/simpan', 'store');
+        Route::get('/{id}/hapus', 'destroy');
+        Route::get('/{id}/edit', 'show');
+        Route::post('/{id}/update', 'update');
+    });
+    
+    Route::prefix('peminjaman')->controller(PeminjamanController::class)->group(function() {
+        Route::get('/', 'index');
+        Route::get('/tambah', 'create');
+        Route::post('/simpan', 'store');
+        Route::get('/{id}/hapus', 'destroy');
+        Route::get('/{id}/edit', 'show');
+        Route::post('/{id}/update', 'update');
+        Route::get('/{id}/struk', 'struk');
+        Route::get('/cetak', 'cetak');
+    });
+});
 
-Route::get('/customer', [CustomerController::class, 'index']);
-Route::get('/customer/tambah', [CustomerController::class, 'create']);
-Route::post('/customer/simpan', [CustomerController::class, 'store']);
-Route::get('/customer/{id}/hapus', [CustomerController::class, 'destroy']);
-Route::get('/customer/{id}/edit', [CustomerController::class, 'show']);
-Route::post('/customer/{id}/update', [CustomerController::class, 'update']);
+Route::prefix('customer')->group(function() {
+    Route::get('/login', [LoginController::class, 'indexCustomer'])->name('login-cus');
+    Route::post('/PostLogin', [LoginController::class, 'loginCustomer']);
+    Route::get('/logout', [LoginController::class, 'logoutCustomer']);
+});
 
-Route::get('/barang', [BarangController::class, 'index']);
-Route::get('/barang/tambah', [BarangController::class, 'create']);
-Route::post('/barang/simpan', [BarangController::class, 'store']);
-Route::get('/barang/{id}/hapus', [BarangController::class, 'destroy']);
-Route::get('/barang/{id}/edit', [BarangController::class, 'show']);
-Route::post('/barang/{id}/update', [BarangController::class, 'update']);
-
-Route::get('/peminjaman', [PeminjamanController::class, 'index']);
-Route::get('/peminjaman/tambah', [PeminjamanController::class, 'create']);
-Route::post('/peminjaman/simpan', [PeminjamanController::class, 'store']);
-Route::get('/peminjaman/{id}/hapus', [PeminjamanController::class, 'destroy']);
-Route::get('/peminjaman/{id}/edit', [PeminjamanController::class, 'show']);
-Route::post('/peminjaman/{id}/update', [PeminjamanController::class, 'update']);
-Route::get('/peminjaman/{id}/struk', [PeminjamanController::class, 'struk']);
-Route::get('/peminjaman/cetak', [PeminjamanController::class, 'cetak']);
 
 Route::get('/', [LoginController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/PostLogin', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
-
-Route::get('/customer/login', [LoginController::class, 'indexCustomer'])->name('login-cus');
-Route::post('/customer/PostLogin', [LoginController::class, 'loginCustomer']);
-Route::get('/customer/logout', [LoginController::class, 'logoutCustomer']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);

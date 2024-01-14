@@ -6,7 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Kelola Data User <a href="/user/tambah" class="btn btn-info" style="float:right;">Tambah</a></h4>
+                    <h4 class="card-title">Kelola Data User <a href="/petugas/user/tambah" class="btn btn-info" style="float:right;">Tambah</a></h4>
                     <div class="table-responsive">
                         <table id="dataTable" class="table table-hover">
                             <thead>
@@ -24,8 +24,8 @@
                                     <td>{{ $u->name }}</td>
                                     <td>{{ $u->username }}</td>
                                     <td>
-                                        <a href="/user/{{ $u->id }}/edit" class="btn btn-warning">Edit</a>
-                                        <a href="/user/{{ $u->id }}/hapus" class="btn btn-danger" onClick="return confirm('Yakin Data Akan dihapus??')">Hapus</a>
+                                        <a href="/petugas/user/{{ $u->id }}/edit" class="btn btn-warning">Edit</a>
+                                        <a href="/petugas/user/{{ $u->id }}/hapus" class="btn btn-danger" onClick="return confirm('Yakin Data Akan dihapus??')">Hapus</a>
                                     </td>
                                 </tr>
                                 @endforeach

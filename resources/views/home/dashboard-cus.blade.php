@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master-cus')
 @section('title', 'Dashboard')
 @section('content')
 <div class="content-wrapper">

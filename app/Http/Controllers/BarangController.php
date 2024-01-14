@@ -26,14 +26,14 @@ class BarangController extends Controller
                 'harga_sewa' => $request->harga_sewa,
                 $request->except(['_token']),
             ]);
-            return redirect('/barang');
+            return redirect('/petugas/barang');
         }
     
         public function destroy($id)
         {
             $barang = Barang::find($id);
             $barang->delete();
-            return redirect('/barang');
+            return redirect('/petugas/barang');
         }
     
         public function show($id)
@@ -52,6 +52,6 @@ class BarangController extends Controller
                 'harga_sewa' => $request->harga_sewa,
                 $request->except(['_token']),
             ]);
-            return redirect('/barang');
+            return redirect('/petugas/barang');
         }
 }

@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Form Tambah Data Barang</h4>
-                    <form class="forms-sample" action="/barang/simpan" method="POST">
+                    <form class="forms-sample" action="/petugas/barang/simpan" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername1">Judul</label>

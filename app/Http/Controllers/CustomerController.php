@@ -27,14 +27,14 @@ class CustomerController extends Controller
             'no_telp' => $request->no_telp,
             $request->except(['_token']),
         ]);
-        return redirect('/customer');
+        return redirect('/petugas/customer');
     }
 
     public function destroy($id)
     {
         $customer = Customer::find($id);
         $customer->delete();
-        return redirect('/customer');
+        return redirect('/petugas/customer');
     }
 
     public function show($id)
@@ -54,6 +54,6 @@ class CustomerController extends Controller
             'no_telp' => $request->no_telp,
             $request->except(['_token']),
         ]);
-        return redirect('/customer');
+        return redirect('/petugas/customer');
     }
 }

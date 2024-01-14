@@ -7,12 +7,12 @@ use App\Models\User;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 
-class PeminjamanController extends Controller
+class CusPeminjamanController extends Controller
 {
     public function index() 
     {
         $peminjaman = Peminjaman::all();
-        return view('home.admin.peminjaman.index', compact(['peminjaman']));
+        return view('home.customer.peminjaman.index', compact(['peminjaman']));
     }
 
     public function create()
@@ -20,19 +20,19 @@ class PeminjamanController extends Controller
         $customer = Customer::all();
         $user = User::all();
         $barang = Barang::all();
-        return view('home.admin.peminjaman.tambah', compact('customer', 'user', 'barang'));
+        return view('home.customer.peminjaman.tambah', compact('customer', 'user', 'barang'));
     }
 
     public function cetak()
     {
         $peminjaman = Peminjaman::all();
-        return view('home.admin.peminjaman.cetak', compact('peminjaman'));
+        return view('home.customer.peminjaman.cetak', compact('peminjaman'));
     }
 
     public function struk($id)
     {
         $peminjaman = Peminjaman::find($id);
-        return view('home.admin.peminjaman.struk', compact('peminjaman'));
+        return view('home.customer.peminjaman.struk', compact('peminjaman'));
     }
 
     public function store(Request $request)
@@ -48,14 +48,14 @@ class PeminjamanController extends Controller
             'total_harga' => $request->total_harga,
             $request->except(['_token']),
         ]);
-        return redirect('/petugas/peminjaman');
+        return redirect('/customer/peminjaman');
     }
 
     public function destroy($id)
     {
         $peminjaman = Peminjaman::find($id);
         $peminjaman->delete();
-        return redirect('/petugas/peminjaman');
+        return redirect('/customer/peminjaman');
     }
 
     public function show($id)
@@ -64,7 +64,7 @@ class PeminjamanController extends Controller
         $customer = Customer::all();
         $user = User::all();
         $barang = Barang::all();
-        return view('home.admin.peminjaman.edit', compact(['peminjaman', 'customer', 'user', 'barang']));
+        return view('home.customer.peminjaman.edit', compact(['peminjaman', 'customer', 'user', 'barang']));
     }
 
     public function update($id, Request $request)
@@ -81,6 +81,6 @@ class PeminjamanController extends Controller
             'total_harga' => $request->total_harga,
             $request->except(['_token']),
         ]);
-        return redirect('/petugas/peminjaman');
+        return redirect('/customer/peminjaman');
     }
 }

@@ -43,7 +43,7 @@ class LoginController extends Controller
 
     public function logoutCustomer()
     {
-        Auth::logout();
-        return view('/customer/login');
+        Auth::guard('customer')->logout();
+        return redirect()->route('login-cus');
     }
 }

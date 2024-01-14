@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Form Tambah Data Peminjaman</h4>
-                    <form class="forms-sample" action="/peminjaman/simpan" method="POST">
+                    <form class="forms-sample" action="/petugas/peminjaman/simpan" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername1">Nama Customer</label>
@@ -29,7 +29,7 @@
                             <label for="exampleInputUsername1">Judul</label>
                             <select name="id_barang" id="" class="form-control" required>
                                 @foreach($barang as $u)
-                                <option value="{{$u->id}}">{{$u->judul}}</option>
+                                <option value="{{$u->id}}">{{$u->judul}} | Rp. {{number_format($u->harga_sewa, 0, '.', '.')}} | {{$u->stok}}</option>
                                 @endforeach
                             </select>
                         </div>

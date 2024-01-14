@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master-cus')
 @section('title', 'Kelola Data Peminjaman')
 @section('content')
 <div class="content-wrapper">
@@ -6,8 +6,8 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Kelola Data Peminjaman <a href="/petugas/peminjaman/tambah" class="btn btn-info" style="float:right;">Tambah</a></h4>
-                    <a href="/petugas/peminjaman/cetak" target="_blank" class="btn btn-success"><span class="fa fa-print"></span>Cetak Laporan</a>
+                    <h4 class="card-title">Kelola Data Peminjaman <a href="/customer/peminjaman/tambah" class="btn btn-info" style="float:right;">Tambah</a></h4>
+                    <a href="/customer/peminjaman/cetak" target="_blank" class="btn btn-success"><span class="fa fa-print"></span>Cetak Laporan</a>
                     <div class="table-responsive">
                         <table id="dataTable" class="table table-hover">
                             <thead>
@@ -37,9 +37,9 @@
                                     <td>{{ $u->jumlah_pinjam }}</td>
                                     <td>{{ $u->total_harga }}</td>
                                     <td>
-                                        <a href="/petugas/peminjaman/{{ $u->id }}/edit" class="btn btn-warning">Edit</a>
-                                        <a href="/petugas/peminjaman/{{$u->id}}/struk" target="_blank" class="btn btn-success"><span class="fa fa-print"></span>Cetak Struk</a>
-                                        <a href="/petugas/peminjaman/{{ $u->id }}/hapus" class="btn btn-danger" onClick="return confirm('Yakin Data Akan dihapus??')">Hapus</a>
+                                        <a href="/customer/peminjaman/{{ $u->id }}/edit" class="btn btn-warning">Edit</a>
+                                        <a href="/customer/peminjaman/{{$u->id}}/struk" target="_blank" class="btn btn-success"><span class="fa fa-print"></span>Cetak Struk</a>
+                                        <a href="/customer/peminjaman/{{ $u->id }}/hapus" class="btn btn-danger" onClick="return confirm('Yakin Data Akan dihapus??')">Hapus</a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -5,6 +5,7 @@ use App\Models\Customer;
 use App\Models\Barang;
 use App\Models\Peminjaman;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -27,7 +28,7 @@ class DashboardController extends Controller
 
     public function indexCustomer()
     {
-        $peminjaman = Peminjaman::select()->whereIn('id_customer', Auth::User()->id)->get();
+        $peminjaman = Peminjaman::Select()->where('id_customer', Auth::User()->id)->get();
         return view('home.dashboard-cus', compact('peminjaman'));
     }
 }

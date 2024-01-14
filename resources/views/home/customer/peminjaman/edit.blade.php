@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master-cus')
 @section('title', 'Form Edit Data Peminjaman')
 @section('content')
 <div class="content-wrapper">
@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Form Edit Data Peminjaman</h4>
-                    <form class="forms-sample" action="/petugas/peminjaman/{{$peminjaman->id}}/update" method="POST">
+                    <form class="forms-sample" action="/customer/peminjaman/{{$peminjaman->id}}/update" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername1">Nama Customer</label>

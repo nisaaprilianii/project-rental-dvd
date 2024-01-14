@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Form Tambah Data User</h4>
-                    <form class="forms-sample" action="/user/simpan" method="POST">
+                    <form class="forms-sample" action="/petugas/user/simpan" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername1">Nama Admin</label>

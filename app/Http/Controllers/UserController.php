@@ -25,14 +25,14 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
             $request->except(['_token']),
         ]);
-        return redirect('/user');
+        return redirect('/petugas/user');
     }
 
     public function destroy($id)
     {
         $user = User::find($id);
         $user->delete();
-        return redirect('/user');
+        return redirect('/petugas/user');
     }
 
     public function show($id)
@@ -50,6 +50,6 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
             $request->except(['_token']),
         ]);
-        return redirect('/user');
+        return redirect('/petugas/user');
     }
 }

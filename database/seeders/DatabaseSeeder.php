@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Customer::create([
-            'name' => 'cus',
+            'nama' => 'cus',
             'username' => 'cus',
             'password' => bcrypt('222'),
             'alamat' => 'jll',

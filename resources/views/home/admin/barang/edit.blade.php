@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Form Tambah Data Barang</h4>
-                    <form class="forms-sample" action="/barang/{{$barang->id}}/update" method="POST">
+                    <form class="forms-sample" action="/petugas/barang/{{$barang->id}}/update" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername1">Judul</label>
@@ -32,7 +32,7 @@
                             <input type="number" class="form-control" name="harga_sewa" value="{{$barang->harga_sewa}}" id="exampleInputEmail1" placeholder="Masukan Harga Sewa" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="/barang" class="btn btn-secondary">Cancel</a>
+                        <a href="/petugas/barang" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>

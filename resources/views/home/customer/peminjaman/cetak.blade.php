@@ -1,15 +1,13 @@
-@extends('layouts.master')
-@section('title', 'Kelola Data Peminjaman')
-@section('content')
-<div class="content-wrapper">
-    <div class="row">
-        <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Kelola Data Peminjaman <a href="/petugas/peminjaman/tambah" class="btn btn-info" style="float:right;">Tambah</a></h4>
-                    <a href="/petugas/peminjaman/cetak" target="_blank" class="btn btn-success"><span class="fa fa-print"></span>Cetak Laporan</a>
-                    <div class="table-responsive">
-                        <table id="dataTable" class="table table-hover">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Transaksi Peminjaman</title>
+</head>
+<body onload="window.print()">
+    <h2>Laporan Transaksi Peminjaman</h2>
+    <table id="dataTable" class="table table-hover" border="1">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -37,18 +35,12 @@
                                     <td>{{ $u->jumlah_pinjam }}</td>
                                     <td>{{ $u->total_harga }}</td>
                                     <td>
-                                        <a href="/petugas/peminjaman/{{ $u->id }}/edit" class="btn btn-warning">Edit</a>
-                                        <a href="/petugas/peminjaman/{{$u->id}}/struk" target="_blank" class="btn btn-success"><span class="fa fa-print"></span>Cetak Struk</a>
-                                        <a href="/petugas/peminjaman/{{ $u->id }}/hapus" class="btn btn-danger" onClick="return confirm('Yakin Data Akan dihapus??')">Hapus</a>
+                                        <a href="/peminjaman/{{ $u->id }}/edit" class="btn btn-warning">Edit</a>
+                                        <a href="/peminjaman/{{ $u->id }}/hapus" class="btn btn-danger" onClick="return confirm('Yakin Data Akan dihapus??')">Hapus</a>
                                     </td>
                                 </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+          </tbody>
+    </table>
+</body>
+</html>

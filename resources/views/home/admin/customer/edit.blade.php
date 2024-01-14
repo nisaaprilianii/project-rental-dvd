@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Form Edit Data Customer</h4>
-                    <form class="forms-sample" action="/customer/{{$customer->id}}/update" method="POST">
+                    <form class="forms-sample" action="/petugas/customer/{{$customer->id}}/update" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername1">Nama Customer</label>
@@ -30,7 +30,7 @@
                             <input type="text" class="form-control" name="no_telp" value="{{$customer->no_telp}}" id="exampleInputPassword1" placeholder="Masukan No Telepon Anda" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="/customer" class="btn btn-secondary">Cancel</a>
+                        <a href="/petugas/customer" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>
